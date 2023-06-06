@@ -74,7 +74,7 @@ const findUserById = require('./server').findUserById
 const createAndSavePractice = require('./server').createAndSavePractice
 app.post('/api/users/:_id/exercises', (req, res) => {
   findUserById(req.params._id, function (err, user) {
-    if (err) return
+    if (err) return console.error(err)
     createAndSavePractice(
       {
         userid: user._id,
@@ -86,9 +86,13 @@ app.post('/api/users/:_id/exercises', (req, res) => {
           : new Date().toDateString(),
       },
       function (err, data) {
+        if (err) return console.error(err)
         res.json({
           _id: data.userid,
           username: data.username,
+          description: data.description,
+          date: new Date(data.date).toDateString(),
+          duration: data.duration,
         })
       }
     )
