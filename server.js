@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 require('dotenv').config()
 
 mongoose.connect(
-  'mongodb+srv://admin:abc123456@cluster0.hzuhauw.mongodb.net/?retryWrites=true&w=majority'
+  'mongodb+srv://admin:abc123456@cluster0.hzuhauw.mongodb.net/test?retryWrites=true&w=majority'
 )
 
 const UserSchema = new mongoose.Schema({
